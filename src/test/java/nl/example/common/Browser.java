@@ -2,10 +2,7 @@ package nl.example.common;
 
 import nl.example.configuration.BrowserType;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -21,6 +18,8 @@ public class Browser {
 
     private WebDriver driver;
     private WebDriverWait wait;
+
+    private static final String BROWSER_PROPERTY_NAME = "browser";
     private static final String GET_PAGE_READYSTATE = "return document.readyState";
     private static final String COMPLETE = "complete";
 
@@ -31,7 +30,9 @@ public class Browser {
         return browser;
     }
 
-    public void startBrowser(BrowserType browserType) {
+    public void startBrowser() {
+        BrowserType browserType = BrowserType.valueOf(System.getProperty(BROWSER_PROPERTY_NAME).toUpperCase());
+
         if (browserType.equals(BrowserType.CHROME)) {
             WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver();
@@ -101,5 +102,9 @@ public class Browser {
 
     public WebDriver.Options manage() {
         return driver.manage();
+    }
+
+    public byte[] makeScreenshot() {
+        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
     }
 }

@@ -1,5 +1,6 @@
 package nl.example.configuration;
 
+import io.cucumber.java.Scenario;
 import nl.example.common.Browser;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -10,12 +11,16 @@ public class WebHook {
 
     @Before
     public void beforeScenario() {
-        browser.startBrowser(BrowserType.CHROME);
+        browser.startBrowser();
     }
 
     @After
-    public void afterScenario() {
+    public void afterScenario(Scenario scenario) {
         browser.quit();
+        if (scenario.isFailed()) {
+            byte[] screenshot = browser.makeScreenshot();
+            scenario.attach(screenshot, "image/png", "name");
+        }
     }
 
 }
