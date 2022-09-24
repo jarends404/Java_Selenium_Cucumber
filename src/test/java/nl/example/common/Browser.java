@@ -1,6 +1,6 @@
-package common;
+package nl.example.common;
 
-import configuration.BrowserType;
+import nl.example.configuration.BrowserType;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -46,6 +46,7 @@ public class Browser {
         }
 
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        driver.manage().window().maximize();
     }
 
     public void get(String url) {
