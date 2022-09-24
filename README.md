@@ -71,7 +71,6 @@ Project Link: [https://github.com/jarends404/Java_Selenium_Cucumber](https://git
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/joost-arends/
-[product-screenshot]: images/screenshot.png
 [Java]: https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=java&logoColor=white
 [Java-url]: https://www.oracle.com/java/technologies/downloads/#java17
 [Selenium]: https://img.shields.io/badge/-selenium-%43B02A?style=for-the-badge&logo=selenium&logoColor=white
