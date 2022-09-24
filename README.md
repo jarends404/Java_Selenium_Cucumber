@@ -7,11 +7,6 @@
   <p align="center">
     This project serves as an example of how to set up a test automation project using Java, Selenium WebDriver and Cucumber.
     <br />
-    <a href="https://github.com/jarends404/Java_Selenium_Cucumber"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/jarends404/Java_Selenium_Cucumber">View Demo</a>
-    ·
     <a href="https://github.com/jarends404/Java_Selenium_Cucumber/issues">Report Bug</a>
     ·
     <a href="https://github.com/jarends404/Java_Selenium_Cucumber/issues">Request Feature</a>
