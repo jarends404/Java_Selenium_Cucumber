@@ -4,14 +4,17 @@ import nl.example.configuration.BrowserType;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * This class is responsible for all interactions with a web browser.
+ */
 public class Browser {
 
     private static Browser browser;
@@ -23,6 +26,15 @@ public class Browser {
     private static final String GET_PAGE_READYSTATE = "return document.readyState";
     private static final String COMPLETE = "complete";
 
+    private Browser() {
+    }
+
+    /**
+     * Creates a new browser instance if one does not already exist.
+     * If one already exists, it returns that instance.
+     *
+     * @return browser
+     */
     public static Browser getInstance() {
         if (browser == null) {
             browser = new Browser();
@@ -30,6 +42,10 @@ public class Browser {
         return browser;
     }
 
+    /**
+     * Instantiates the web driver. It retrieves the wanted browser type from the system properties at runtime.
+     * Makes use of {@link io.github.bonigarcia} to download the latest driver binaries.
+     */
     public void startBrowser() {
         BrowserType browserType = BrowserType.valueOf(System.getProperty(BROWSER_PROPERTY_NAME).toUpperCase());
 
@@ -39,9 +55,9 @@ public class Browser {
         } else if (browserType.equals(BrowserType.FIREFOX)) {
             WebDriverManager.firefoxdriver().setup();
             driver = new FirefoxDriver();
-        } else if (browserType.equals(BrowserType.EDGE)) {
-            WebDriverManager.edgedriver().setup();
-            driver = new EdgeDriver();
+        } else if (browserType.equals(BrowserType.SAFARI)) {
+            WebDriverManager.safaridriver().setup();
+            driver = new SafariDriver();
         } else {
             throw new UnsupportedOperationException("BrowserType: " + browserType.name() + " not supported.");
         }
@@ -62,11 +78,25 @@ public class Browser {
         return driver.getTitle();
     }
 
+    /**
+     * Finds all web elements that match the CSS selector.
+     * Waits for the page to be fully loaded before searching the web elements.
+     *
+     * @param selector  CSS selector
+     * @return          List of all matching elements
+     */
     public List<WebElement> findElements(String selector) {
         wait.until(webDriver -> ((JavascriptExecutor) webDriver).executeScript(GET_PAGE_READYSTATE).equals(COMPLETE));
         return driver.findElements(By.cssSelector(selector));
     }
 
+    /**
+     * Returns the first web element that matches the CSS selector.
+     * Waits for the page to be fully loaded before searching the web element.
+     *
+     * @param selector  CSS selector
+     * @return          WebElement
+     */
     public WebElement findElement(String selector) {
         wait.until(webDriver -> ((JavascriptExecutor) webDriver).executeScript(GET_PAGE_READYSTATE).equals(COMPLETE));
         return driver.findElement(By.cssSelector(selector));

@@ -60,6 +60,10 @@
     </dependencies>
 
     <profiles>
+        <!-- The profiles below are used to run tests on multiple browsers.
+             Each profile is activated by passing a browser property with the corresponding value.
+             So for example: 'mvn test -Dbrowser=chrome' activates the chrome-integration-test profile.
+             The triggered profile then refers to that browser's corresponding TestRunner -->
         <profile>
             <id>chrome-integration-test</id>
             <activation>
@@ -103,11 +107,11 @@
             </build>
         </profile>
         <profile>
-            <id>edge-integration-test</id>
+            <id>safari-integration-test</id>
             <activation>
                 <property>
                     <name>browser</name>
-                    <value>edge</value>
+                    <value>safari</value>
                 </property>
             </activation>
             <build>
@@ -117,7 +121,7 @@
                         <artifactId>maven-surefire-plugin</artifactId>
                         <version>${maven-surefire.version}</version>
                         <configuration>
-                            <test>nl.example.TestRunnerFirefox</test>
+                            <test>nl.example.TestRunnerSafari</test>
                         </configuration>
                     </plugin>
                 </plugins>
