@@ -52,7 +52,14 @@ To get a local copy up and running follow these simple example nl.example.steps.
 
 ### Run tests individually
 
+To run tests individually, the `Cucumber for Java` plugin is required. It will add a run button next to every feature and scenario.
+Before running a test, edit the run configurations and specify the environment and the browser you want to use for your tests in the VM options.
+For example, if you want to run your tests on the develop environment using a Chrome browser, add: `-Denvironment=test -Dbrowser=chrome`
+
 ### Run test suites
+
+Running an entire test suite can be done from the command line by using the `mvn test` command. You need to add the environment and browser as properties.
+For example, if you want to run your tests on the develop environment using a Chrome browser, the command will be: `mvn test -Denvironment=test -Dbrowser=chrome`
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
