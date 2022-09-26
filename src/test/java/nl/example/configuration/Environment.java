@@ -5,6 +5,9 @@ import org.junit.jupiter.api.Assertions;
 import java.io.IOException;
 import java.util.Properties;
 
+/**
+ * This class is responsible for retrieving environment specific information from the property files.
+ */
 public class Environment {
 
     private static Environment environment;
