@@ -1,7 +1,6 @@
-package nl.example.common;
+package nl.example.util;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import nl.example.configuration.Environment;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;

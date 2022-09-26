@@ -1,5 +1,6 @@
-package nl.example.common;
+package nl.example.pages.base;
 
+import nl.example.util.Browser;
 import org.junit.jupiter.api.Assertions;
 
 public class BasePage {

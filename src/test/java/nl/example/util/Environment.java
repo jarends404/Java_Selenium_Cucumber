@@ -1,4 +1,4 @@
-package nl.example.configuration;
+package nl.example.util;
 
 import org.junit.jupiter.api.Assertions;
 

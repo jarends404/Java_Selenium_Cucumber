@@ -1,4 +1,7 @@
-package nl.example.common;
+package nl.example.steps.base;
+
+import nl.example.util.Browser;
+import nl.example.pages.base.Pages;
 
 public class BaseSteps {
 

@@ -1,6 +1,6 @@
 package nl.example.pages;
 
-import nl.example.common.BasePage;
+import nl.example.pages.base.BasePage;
 
 public class InventoryPage extends BasePage {
 

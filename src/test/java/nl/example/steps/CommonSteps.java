@@ -1,6 +1,6 @@
 package nl.example.steps;
 
-import nl.example.common.BaseSteps;
+import nl.example.steps.base.BaseSteps;
 import io.cucumber.java.en.Given;
 
 public class CommonSteps extends BaseSteps {

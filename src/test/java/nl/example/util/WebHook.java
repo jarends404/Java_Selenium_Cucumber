@@ -1,7 +1,6 @@
-package nl.example.configuration;
+package nl.example.util;
 
 import io.cucumber.java.Scenario;
-import nl.example.common.Browser;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 

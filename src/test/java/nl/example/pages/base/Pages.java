@@ -1,4 +1,4 @@
-package nl.example.common;
+package nl.example.pages.base;
 
 import nl.example.pages.InventoryPage;
 import nl.example.pages.LoginPage;
