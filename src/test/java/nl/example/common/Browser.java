@@ -2,6 +2,7 @@ package nl.example.common;
 
 import nl.example.configuration.BrowserType;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import nl.example.configuration.Environment;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -21,8 +22,10 @@ public class Browser {
 
     private WebDriver driver;
     private WebDriverWait wait;
+    private final Environment environment = Environment.getInstance();
 
     private static final String BROWSER_PROPERTY_NAME = "browser";
+    private static final String BASE_URL_PROPERTY_NAME = "baseUrl";
     private static final String GET_PAGE_READYSTATE = "return document.readyState";
     private static final String COMPLETE = "complete";
 
@@ -66,8 +69,14 @@ public class Browser {
         driver.manage().window().maximize();
     }
 
-    public void get(String url) {
-        driver.get(url);
+    /**
+     * Appends the URI parameter to the base URL specified in the environment.properties file.
+     * Then goes on to load a new web page in the current browser window.
+     *
+     * @param uri   The URI to append to the base URL.
+     */
+    public void get(String uri) {
+        driver.get(environment.getProperty(BASE_URL_PROPERTY_NAME) + uri);
     }
 
     public String getCurrentUrl() {
