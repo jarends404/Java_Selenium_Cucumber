@@ -1,4 +1,4 @@
-package nl.example.configuration;
+package nl.example.common;
 
 public enum BrowserType {
     CHROME,

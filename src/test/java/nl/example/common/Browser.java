@@ -1,6 +1,5 @@
 package nl.example.common;
 
-import nl.example.configuration.BrowserType;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import nl.example.configuration.Environment;
 import org.openqa.selenium.*;
