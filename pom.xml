@@ -61,29 +61,6 @@
     </dependencies>
 
     <profiles>
-        <!-- The profiles below are used to run tests on different environments.
-             Each profile is activated by passing an environment property with the corresponding value.
-             So for example: 'mvn test -Denvironment=develop' runs all tests on the develop environment.
-             Environment specific environment (e.g. URLs) can be added to that environment's property file -->
-        <profile>
-            <id>develop</id>
-            <activation>
-                <property>
-                    <name>environment</name>
-                    <value>develop</value>
-                </property>
-            </activation>
-        </profile>
-        <profile>
-            <id>test</id>
-            <activation>
-                <property>
-                    <name>environment</name>
-                    <value>test</value>
-                </property>
-            </activation>
-        </profile>
-
         <!-- The profiles below are used to run tests on multiple browsers.
              Each profile is activated by passing a browser property with the corresponding value.
              So for example: 'mvn test -Dbrowser=chrome' activates the chrome-integration-test profile.
