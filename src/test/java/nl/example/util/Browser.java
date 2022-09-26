@@ -22,10 +22,12 @@ public class Browser {
     private WebDriverWait wait;
     private final Environment environment = Environment.getInstance();
 
+    private static final int EXPLICIT_WAIT_TIME = 10;
+
     private static final String BROWSER_PROPERTY_NAME = "browser";
     private static final String BASE_URL_PROPERTY_NAME = "baseUrl";
     private static final String GET_PAGE_READYSTATE = "return document.readyState";
-    private static final String COMPLETE = "complete";
+    private static final String READYSTATE_COMPLETE = "complete";
 
     private Browser() {
     }
@@ -63,12 +65,12 @@ public class Browser {
             throw new UnsupportedOperationException("BrowserType: " + browserType.name() + " not supported.");
         }
 
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(EXPLICIT_WAIT_TIME));
         driver.manage().window().maximize();
     }
 
     /**
-     * Appends the URI parameter to the base URL specified in the environment.properties file.
+     * Appends the URI value to the base URL specified in the environment.properties file.
      * Then goes on to load a new web page in the current browser window.
      *
      * @param uri   The URI to append to the base URL.
@@ -93,7 +95,8 @@ public class Browser {
      * @return          List of all matching elements
      */
     public List<WebElement> findElements(String selector) {
-        wait.until(webDriver -> ((JavascriptExecutor) webDriver).executeScript(GET_PAGE_READYSTATE).equals(COMPLETE));
+        wait.until(webDriver -> ((JavascriptExecutor) webDriver)
+                .executeScript(GET_PAGE_READYSTATE).equals(READYSTATE_COMPLETE));
         return driver.findElements(By.cssSelector(selector));
     }
 
@@ -105,7 +108,8 @@ public class Browser {
      * @return          WebElement
      */
     public WebElement findElement(String selector) {
-        wait.until(webDriver -> ((JavascriptExecutor) webDriver).executeScript(GET_PAGE_READYSTATE).equals(COMPLETE));
+        wait.until(webDriver -> ((JavascriptExecutor) webDriver)
+                .executeScript(GET_PAGE_READYSTATE).equals(READYSTATE_COMPLETE));
         return driver.findElement(By.cssSelector(selector));
     }
 

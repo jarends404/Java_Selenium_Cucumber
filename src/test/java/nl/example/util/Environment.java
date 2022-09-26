@@ -1,7 +1,5 @@
 package nl.example.util;
 
-import org.junit.jupiter.api.Assertions;
-
 import java.io.IOException;
 import java.util.Properties;
 
@@ -37,7 +35,7 @@ public class Environment {
         try {
             properties.load(getClass().getClassLoader().getResourceAsStream(path));
         } catch (IOException ioex) {
-            Assertions.fail("IOException occurred while loading properties file: " + ioex.getMessage());
+            throw new RuntimeException(ioex);
         }
     }
 }
