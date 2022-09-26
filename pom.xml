@@ -19,6 +19,7 @@
         <junit.version>5.9.1</junit.version>
         <junit-platform.version>1.9.1</junit-platform.version>
         <maven-surefire.version>3.0.0-M7</maven-surefire.version>
+        <maven-help.version>3.1.0</maven-help.version>
     </properties>
 
     <dependencies>
@@ -158,7 +159,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-help-plugin</artifactId>
-                <version>3.1.0</version>
+                <version>${maven-help.version}</version>
                 <executions>
                     <execution>
                         <id>show-profiles</id>
@@ -169,7 +170,7 @@
                     </execution>
                 </executions>
             </plugin>
-
         </plugins>
     </build>
+
 </project>
